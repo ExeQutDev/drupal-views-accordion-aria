@@ -1,0 +1,16 @@
+views_accordion_aria.styles:
+  version: 1.x
+  css:
+    theme:
+      css/views-accordion-aria.css: {}
+
+global-scripts:
+  version: 1.x
+  header: true
+  js:
+    js/views-accordion-aria.js: {}
+  dependencies:
+    - core/drupal
+    - core/jquery
+    - core/once
+    - jquery_ui_accordion/accordion

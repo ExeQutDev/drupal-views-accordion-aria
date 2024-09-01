@@ -1,0 +1,67 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for Views Accordion - Aria 508 module.
+ */
+
+/*
+function views_accordion_aria_theme_suggestions_views_view(array $variables) {
+    $view_storage = $variables['view']->storage;
+    $dependencies = $view_storage->dependencies;
+    $accordion_view = false;
+    foreach($item as $dependencies['module']) {
+        if ($item === 'views_accordion') {
+            $accordion_view = true;
+            break;
+        }
+    }
+    if ($accordion_view === true) {
+        $x = 0;
+    }
+}
+*/
+
+function views_accordion_aria_theme_suggestions_views_accordion_view(array $variables) {
+    $suggestions[] = 'views_accordion_view__views_accordion_aria';
+    return $suggestions;
+}
+
+/*
+function views_accordion_aria_theme_suggestions_views_view_grouping(array $variables) {
+    $suggestions[] = 'views_view_grouping__views_accordion_aria';
+    return $suggestions;
+}
+*/
+
+function views_accordion_aria_theme() {
+    return [
+        'views_accordion_view__views_accordion_aria' => [
+            'template' => 'views-accordion-view--views-accordion-aria',
+            'render element' => 'content',
+            'base hook' => 'views_accordion_view',
+        ],
+        'views_view_grouping__views_accordion_aria' => [
+            'template' => 'views-view-grouping--views-accordion-aria',
+            'render element' => 'content',
+            'base hook' => 'views_view_grouping',
+        ],
+    ];
+}
+
+function views_accordion_aria_theme_suggestions_views_view_grouping_alter(array &$suggestions, array $variables) {
+    $template = '';
+    $style_plugin = $variables['view']->style_plugin->getPluginId();
+    if ($style_plugin === 'views_accordion') {
+        $suggestions[] = 'views_view_grouping__views_accordion_aria';
+    }
+}
+
+/**
+ * 
+ * Implements hook_page_attachments()
+ */
+function views_accordion_aria_page_attachments(array &$page) {
+  $page['#attached']['library'][] = 'views_accordion_aria/global-scripts';
+}
+ 

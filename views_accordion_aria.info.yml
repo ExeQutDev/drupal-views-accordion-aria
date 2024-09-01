@@ -1,0 +1,8 @@
+name: 'Views Accordion - Aria 508'
+type: module
+description: 'Views Accordion - Aria 508 extensions for template and javascript behaviors'
+package: Custom
+core_version_requirement: ^10 || ^11
+version: 10.3.2
+dependencies:
+  - views_accordion
